@@ -27,8 +27,9 @@
   .choice{
     background:#334155; color:var(--text); border:2px solid transparent; border-radius:10px;
     padding:14px 10px; font-size:0.95rem; cursor:pointer; transition:all .15s;
-    min-height:56px; display:flex; align-items:center; justify-content:center; text-align:center;
+    min-height:68px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
   }
+  .region{display:block; height:1rem; line-height:1rem; font-size:0.75rem; font-weight:600; opacity:0.8; margin-top:3px;}
   .choice:hover{background:#475569;}
   .choice.correct{background:var(--good); border-color:var(--good); color:#062;}
   .choice.wrong{background:var(--bad); border-color:var(--bad); color:#200;}
@@ -104,7 +105,7 @@ function renderQuestion(){
   card.innerHTML = `
     <div class="flagbox"><img src="${flagUrl(code)}" alt="flag"></div>
     <div class="choices">
-      ${options.map(o => `<button class="choice" data-name="${o[1]}">${o[1]}</button>`).join('')}
+      ${options.map(o => `<button class="choice" data-name="${o[1]}">${o[1]}<span class="region"></span></button>`).join('')}
     </div>
     <div class="footer">
       <button class="restart" onclick="startQuiz()">Restart</button>
@@ -120,7 +121,10 @@ function renderQuestion(){
       const picked = btn.dataset.name;
       card.querySelectorAll('.choice').forEach(b => {
         b.disabled = true;
-        if(b.dataset.name === correctName) b.classList.add('correct');
+        if(b.dataset.name === correctName){
+          b.classList.add('correct');
+          b.querySelector('.region').textContent = REGIONS[code];
+        }
         else if(b === btn) b.classList.add('wrong');
         else b.classList.add('dim');
       });
