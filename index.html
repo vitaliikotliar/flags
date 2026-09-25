@@ -27,9 +27,10 @@
   .choice{
     background:#334155; color:var(--text); border:2px solid transparent; border-radius:10px;
     padding:14px 10px; font-size:0.95rem; cursor:pointer; transition:all .15s;
-    min-height:68px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    min-height:56px; display:flex; align-items:center; justify-content:center; text-align:center;
   }
-  .region{display:block; height:1rem; line-height:1rem; font-size:0.75rem; font-weight:600; opacity:0.8; margin-top:3px;}
+  .footer-left{display:flex; align-items:center; gap:12px;}
+  .region{font-size:0.9rem; font-weight:600; color:var(--good);}
   .choice:hover{background:#475569;}
   .choice.correct{background:var(--good); border-color:var(--good); color:#062;}
   .choice.wrong{background:var(--bad); border-color:var(--bad); color:#200;}
@@ -105,10 +106,13 @@ function renderQuestion(){
   card.innerHTML = `
     <div class="flagbox"><img src="${flagUrl(code)}" alt="flag"></div>
     <div class="choices">
-      ${options.map(o => `<button class="choice" data-name="${o[1]}">${o[1]}<span class="region"></span></button>`).join('')}
+      ${options.map(o => `<button class="choice" data-name="${o[1]}">${o[1]}</button>`).join('')}
     </div>
     <div class="footer">
-      <button class="restart" onclick="startQuiz()">Restart</button>
+      <div class="footer-left">
+        <button class="restart" onclick="startQuiz()">Restart</button>
+        <span class="region" id="region"></span>
+      </div>
       <button class="next" id="nextBtn">${idx+1===TOTAL ? 'Finish' : 'Next →'}</button>
     </div>
   `;
@@ -123,7 +127,7 @@ function renderQuestion(){
         b.disabled = true;
         if(b.dataset.name === correctName){
           b.classList.add('correct');
-          b.querySelector('.region').textContent = REGIONS[code];
+          document.getElementById('region').textContent = REGIONS[code];
         }
         else if(b === btn) b.classList.add('wrong');
         else b.classList.add('dim');
