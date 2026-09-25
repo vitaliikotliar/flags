@@ -7,7 +7,7 @@ const COUNTRIES = [
 ["bo","Bolivia"],["ba","Bosnia and Herzegovina"],["bw","Botswana"],["br","Brazil"],["bn","Brunei"],
 ["bg","Bulgaria"],["bf","Burkina Faso"],["bi","Burundi"],["cv","Cabo Verde"],["kh","Cambodia"],
 ["cm","Cameroon"],["ca","Canada"],["cf","Central African Republic"],["td","Chad"],["cl","Chile"],
-["cn","China"],["co","Colombia"],["km","Comoros"],["cg","Congo"],["cd","Congo (DR)"],
+["cn","China"],["co","Colombia"],["km","Comoros"],["cg","Republic of the Congo"],["cd","DR Congo"],
 ["cr","Costa Rica"],["ci","Cote d'Ivoire"],["hr","Croatia"],["cu","Cuba"],["cy","Cyprus"],
 ["cz","Czechia"],["dk","Denmark"],["dj","Djibouti"],["dm","Dominica"],["do","Dominican Republic"],
 ["ec","Ecuador"],["eg","Egypt"],["sv","El Salvador"],["gq","Equatorial Guinea"],["er","Eritrea"],
